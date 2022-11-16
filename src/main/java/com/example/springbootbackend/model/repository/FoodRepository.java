@@ -1,4 +1,4 @@
-package com.example.springbootbackend.repository;
+package com.example.springbootbackend.model.repository;
 
 import com.example.springbootbackend.model.Food;
 import org.springframework.data.jpa.repository.JpaRepository;
