@@ -10,7 +10,7 @@ import java.util.Comparator;
 import java.util.List;
 
 @Service
-public abstract class FoodServiceImpl implements FoodService{
+public class FoodServiceImpl implements FoodService{
 
 
 
@@ -18,8 +18,13 @@ public abstract class FoodServiceImpl implements FoodService{
     private FoodRepository foodRepository;
 
     @Override
-    public Food saveFood(Food food) {
-        return foodRepository.save(food);
+    public void saveFood(Food food) {
+        foodRepository.save(food);
+    }
+
+    @Override
+    public void deleteFood(Food food) {
+        foodRepository.delete(food);
     }
 
     @Override
