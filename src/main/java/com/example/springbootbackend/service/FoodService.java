@@ -7,7 +7,7 @@ import java.util.List;
 public interface FoodService {
     public void saveFood(Food food);
 
-   public void deleteFood(Food food);
+    public void deleteFoodByID(int id);
 
     public List<Food> getAllFood();
 }

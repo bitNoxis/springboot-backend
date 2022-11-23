@@ -21,8 +21,8 @@ public class FoodController {
         return  "New food is added";
     }
    @DeleteMapping( "/delete")
-    public String delete(@RequestBody Food food){
-        foodService.deleteFood(food);
+    public String delete(@RequestBody int id){
+        foodService.deleteFoodByID(id);
         return "Food is deleted";
     }
 

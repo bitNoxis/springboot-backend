@@ -5,7 +5,6 @@ import com.example.springbootbackend.model.repository.FoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -23,9 +22,11 @@ public class FoodServiceImpl implements FoodService{
     }
 
     @Override
-    public void deleteFood(Food food) {
-        foodRepository.delete(food);
+    public void deleteFoodByID(int id) {
+        foodRepository.deleteById(id);
     }
+
+
 
     @Override
     public List<Food> getAllFood() {
@@ -34,7 +35,7 @@ public class FoodServiceImpl implements FoodService{
 
     private  List<Food> sortFood(){
         List<Food> unsortedFoods = foodRepository.findAll();
-        Collections.sort(unsortedFoods,BY_DATE);
+        unsortedFoods.sort(BY_DATE);
        return unsortedFoods; }
 
     protected static final Comparator<Food>BY_DATE = Comparator.comparing(Food::getExpirationdate);
