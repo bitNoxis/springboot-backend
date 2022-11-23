@@ -20,12 +20,12 @@ public class FoodController {
     }
 
     @GetMapping
-    public List<Food> getClients() {
+    public List<Food> getFoods() {
         return foodRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Food getClient(@PathVariable Integer id) {
+    public Food getFoods(@PathVariable Integer id) {
         return foodRepository.findById(id).orElseThrow(RuntimeException::new);
     }
 
