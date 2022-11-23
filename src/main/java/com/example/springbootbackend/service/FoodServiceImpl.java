@@ -10,7 +10,7 @@ import java.util.Comparator;
 import java.util.List;
 
 @Service
-public class FoodServiceImpl implements FoodService{
+public abstract class FoodServiceImpl implements FoodService{
 
 
 
@@ -24,8 +24,6 @@ public class FoodServiceImpl implements FoodService{
 
     @Override
     public List<Food> getAllFood() {
-        //hier sortieren
-
         return  sortFood();
     }
 
