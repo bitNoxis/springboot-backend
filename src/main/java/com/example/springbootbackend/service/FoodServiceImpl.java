@@ -37,12 +37,6 @@ public class FoodServiceImpl implements FoodService{
         Collections.sort(unsortedFoods,BY_DATE);
        return unsortedFoods; }
 
-    protected static final Comparator<Food>BY_DATE = new Comparator<Food>() {
-        @Override
-        public int compare(Food o1, Food o2) {
-            return o1.getExpirationdate().compareTo(o2.getExpirationdate()) ;
-
-        }
-    };
+    protected static final Comparator<Food>BY_DATE = Comparator.comparing(Food::getExpirationdate);
 
 }
