@@ -10,7 +10,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/clients")
+@RequestMapping("/food")
 public class FoodController {
 
     private final FoodRepository foodRepository;
@@ -30,7 +30,7 @@ public class FoodController {
     }
 
     @PostMapping
-    public ResponseEntity createClient(@RequestBody Food food) throws URISyntaxException {
+    public ResponseEntity createFood(@RequestBody Food food) throws URISyntaxException {
         Food savedFood = foodRepository.save(food);
         return ResponseEntity.created(new URI("/foods/" + savedFood.getProductid())).body(savedFood);
     }
