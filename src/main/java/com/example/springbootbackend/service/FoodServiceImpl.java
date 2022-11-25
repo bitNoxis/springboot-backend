@@ -2,6 +2,7 @@ package com.example.springbootbackend.service;
 
 import com.example.springbootbackend.model.Food;
 import com.example.springbootbackend.model.repository.FoodRepository;
+import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,13 +31,14 @@ public class FoodServiceImpl implements FoodService{
 
     @Override
     public List<Food> getAllFood() {
-        return  sortFood();
+        return  sortFood(foodRepository.findAll());
     }
 
-    private  List<Food> sortFood(){
-        List<Food> unsortedFoods = foodRepository.findAll();
-        unsortedFoods.sort(BY_DATE);
-       return unsortedFoods; }
+    public  List<Food> sortFood(List<Food> listUnsortedFood) {
+        List<Food> listSortedFood= listUnsortedFood;
+        listSortedFood.sort(BY_DATE);
+        return listSortedFood;
+    }
 
     protected static final Comparator<Food>BY_DATE = Comparator.comparing(Food::getExpirationdate);
 
