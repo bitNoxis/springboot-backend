@@ -2,10 +2,10 @@ package com.example.springbootbackend.service;
 
 import com.example.springbootbackend.model.Food;
 import com.example.springbootbackend.model.repository.FoodRepository;
+import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -18,28 +18,28 @@ public class FoodServiceImpl implements FoodService{
     private FoodRepository foodRepository;
 
     @Override
-    public Food saveFood(Food food) {
-        return foodRepository.save(food);
+    public void saveFood(Food food) {
+        foodRepository.save(food);
     }
 
     @Override
-    public List<Food> getAllFood() {
-        //hier sortieren
-
-        return  sortFood();
+    public void deleteFoodByID(int id) {
+        foodRepository.deleteById(id);
     }
 
-    private  List<Food> sortFood(){
-        List<Food> unsortedFoods = foodRepository.findAll();
-        Collections.sort(unsortedFoods,BY_DATE);
-       return unsortedFoods; }
 
-    protected static final Comparator<Food>BY_DATE = new Comparator<Food>() {
-        @Override
-        public int compare(Food o1, Food o2) {
-            return o1.getExpirationdate().compareTo(o2.getExpirationdate()) ;
 
-        }
-    };
+    @Override
+    public List<Food> getAllFood() {
+        return  sortFood(foodRepository.findAll());
+    }
+
+    public  List<Food> sortFood(List<Food> listUnsortedFood) {
+        List<Food> listSortedFood= listUnsortedFood;
+        listSortedFood.sort(BY_DATE);
+        return listSortedFood;
+    }
+
+    protected static final Comparator<Food>BY_DATE = Comparator.comparing(Food::getExpirationdate);
 
 }

@@ -20,6 +20,11 @@ public class FoodController {
         foodService.saveFood(food);
         return  "New food is added";
     }
+   @DeleteMapping( "/delete/{id}")
+    public String delete(@PathVariable Integer id){
+        foodService.deleteFoodByID(id);
+        return "Food is deleted";
+    }
 
     @GetMapping("/getAll")
     public List<Food> getAllFood(){

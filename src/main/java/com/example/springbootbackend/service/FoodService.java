@@ -5,6 +5,9 @@ import com.example.springbootbackend.model.Food;
 import java.util.List;
 
 public interface FoodService {
-    public Food saveFood(Food food);
+    public void saveFood(Food food);
+
+    public void deleteFoodByID(int id);
+
     public List<Food> getAllFood();
 }
